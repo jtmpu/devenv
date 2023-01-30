@@ -1,5 +1,7 @@
 # README
 
+Inspiration from: https://github.com/Alexis12119/nvim-config/
+
 ## Manual labor
 
 [ ] Install nerd fonts in terminal

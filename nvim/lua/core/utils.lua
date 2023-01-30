@@ -1,6 +1,6 @@
 function _G.reload_nvim_conf()
   for name,_ in pairs(package.loaded) do
-    if name:match('^core') or name:match('^packer-plugin-bootstrap') or name:match('^plugin-configs') then
+    if name:match('^core') or name:match('^packer-plugin-bootstrap') or name:match('^plugins') then
       package.loaded[name] = nil
     end
   end
