@@ -107,11 +107,19 @@ return {
         p = { ":Lazy profile<cr>", "Profile" },
         u = { ":Lazy update<cr>", "Update" },
       },
+      g = {
+        name = "Git",
+        s = { ":Telescope git_status<cr>", "Status" },
+        l = { ":Telescope git_stash<cr>", "Stashes" },
+        L = { ":! git stash<cr>", "Stash changes" },
+        b = { ":Telescope git_branches<cr>", "Branches" },
+      },
       s = {
         name = "Search",
         c = { ":Telescope find_files cwd=~/.config/nvim<CR>", "Config files" },
         r = { ":Telescope oldfiles<cr>", "Recent files" },
         H = { ":Telescope highlights<cr>", "Highlights" },
+        t = { ":Telescope<cr>", "Telescope builtins" },
       },
     }
 

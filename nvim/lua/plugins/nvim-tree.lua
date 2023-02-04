@@ -34,7 +34,56 @@ return {
   config = function()
     local tree = require("nvim-tree")
     local setup = {
+      disable_netrw = false,
+      auto_reload_on_write = false,
+      diagnostics = {
+        enable = false,
+        icons = {
+          hint = "",
+          info = "",
+          warning = "",
+          error = "",
+        },
+      },
+      update_focused_file = {
+        enable = true,
+        update_cwd = true,
+        ignore_list = {},
+      },
+      renderer = {
+        icons = {
+          glyphs = {
+            default = "",
+            symlink = "",
+            folder = {
+              default = "",
+              open = "",
+              empty = "",
+              empty_open = "",
+              symlink = "",
+            },
+            git = {
+              unstaged = "",
+              staged = "S",
+              unmerged = "",
+              renamed = "➜",
+              deleted = "",
+              untracked = "U",
+              ignored = "◌",
+            },
+          },
+        },
+      },
+      actions = {
+        use_system_clipboard = true,
+        change_dir = {
+          enable = false,
+          global = false,
+          restrict_above_cwd = false,
+        },
+      },
     }
+
     tree.setup(setup)
   end,
 }
