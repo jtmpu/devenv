@@ -100,6 +100,11 @@ end
 M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
   lsp_highlight(client, bufnr)
+
+  if vim.fn.exists "#Format on save#BufWritePre" == 0 then
+    enable_format_on_save(client)
+  end
+
   vim.api.nvim_create_user_command("FormatOnSaveToggle", function()
     if vim.fn.exists "#Format on save#BufWritePre" == 0 then
       enable_format_on_save(client)
