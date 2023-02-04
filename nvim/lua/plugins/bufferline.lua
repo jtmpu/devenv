@@ -1,10 +1,12 @@
 return {
   "akinsho/bufferline.nvim",
   event = { "BufReadPost", "BufNewFile" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons"
+  },
   config = function()
-    local bufferline = require "bufferline"
-
-    bufferline.setup {
+    local bufferline = require("bufferline")
+    local setup = {
       options = {
         mode = "buffers", -- set to "tabs" to only show tabpages instead
         close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -36,5 +38,7 @@ return {
         },
       },
     }
+
+    bufferline.setup(setup)
   end,
 }

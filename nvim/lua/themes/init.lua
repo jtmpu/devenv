@@ -1,13 +1,20 @@
-local name = "onedark"
+local theme = "tokyonight"
+local fallback_theme = "habamax"
 
--- Check if there's a colorscheme configuration
-pcall(require, "themes." .. name)
-
-local theme_ok = pcall(vim.cmd.colorscheme, name)
-if not theme_ok then
-  vim.cmd.colorscheme "habamax"
-  return vim.notify("\nFailed to load colorscheme " .. name .. "\nUse habamax instead", vim.log.levels.ERROR)
-else
-  -- Load colorscheme
-  vim.cmd.colorscheme(name)
+-- check if there is a configuration for the theme
+local status_ok = pcall(require, "themes." .. theme)
+if not status_ok then
+  local msg = "Failed to load configuration for'" .. theme .. "'. Falling back to '" .. fallback_theme .. "'"
+  vim.notify(msg, vim.log.levels.ERROR)
+  vim.cmd.colorscheme(fallback_theme)
+  return
 end
+
+local theme_ok = pcall(vim.cmd.colorscheme, theme)
+if not theme_ok then
+  vim.notify("Failed to load theme '" .. theme .. "'. Falling back to '" .. fallback_theme "'", vim.log.levels.ERROR)
+  vim.cmd.colorscheme(fallback_theme)
+else
+  -- vim.cmd.colorscheme(theme)
+end
+

@@ -4,7 +4,9 @@ return {
   cmd = "WhichKey",
   keys = "<leader>",
   config = function()
-    local which_key = require "which-key"
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+    local wk = require("which-key")
 
     local setup = {
       plugins = {
@@ -81,55 +83,19 @@ return {
       nowait = true, -- use `nowait` when creating keymaps
     }
 
-    local function toggleAlpha()
-      if vim.bo.buftype == "" or vim.bo.filetype == "alpha" or vim.bo.filetype == "checkhealth" then
-        vim.cmd ":Alpha"
-      end
-    end
-
     local mappings = {
-      ["a"] = { toggleAlpha, "Alpha" },
-      ["r"] = { ":%d+<cr>", "Remove All Text" },
-      ["y"] = { ":%y+<cr>", "Yank All Text" },
-      ["e"] = { ":NvimTreeToggle<cr>", "Explorer" },
-      ["q"] = { ":qa!<cr>", "Quit" },
-      ["c"] = { ":bdelete!<cr>", "Close Buffer" },
-      ["f"] = {
+      a = { ":Alpha<CR>", "Dashboard" },
+      e = { ":NvimTreeToggle<cr>", "Explorer" },
+      q = { ":qa!<cr>", "Quit" },
+      w = { ":w<cr>", "Save buffer"},
+      c = { ":bd<cr>", "Close buffer"},
+      f = {
         ":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
         "Find files",
       },
-      ["F"] = { ":Telescope live_grep theme=get_dropdown<cr>", "Find Text" },
-      g = {
-        name = "Git",
-        g = {
-          function()
-            local Terminal = require("toggleterm.terminal").Terminal
-            local lazygit = Terminal:new { cmd = "lazygit", hidden = true }
-            lazygit:toggle()
-          end,
-          "Lazygit",
-        },
-        j = { ":lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-        k = { ":lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-        l = { ":lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-        p = { ":lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-        r = { ":lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-        R = { ":lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-        s = { ":lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-        u = {
-          ":lua require 'gitsigns'.undo_stage_hunk()<cr>",
-          "Undo Stage Hunk",
-        },
-        o = { ":Telescope git_status<cr>", "Open changed file" },
-        b = { ":Telescope git_branches<cr>", "Checkout branch" },
-        c = { ":Telescope git_commits<cr>", "Checkout commit" },
-        d = {
-          ":Gitsigns diffthis HEAD<cr>",
-          "Diff",
-        },
-      },
+      F = { ":Telescope live_grep theme=get_dropdown<cr>", "Find Text" },
       p = {
-        name = "Plugin",
+        name = "Plugins",
         c = { ":Lazy clean<cr>", "Clean" },
         C = { ":Lazy check<cr>", "Check" },
         d = { ":Lazy debug<cr>", "Debug" },
@@ -141,52 +107,15 @@ return {
         p = { ":Lazy profile<cr>", "Profile" },
         u = { ":Lazy update<cr>", "Update" },
       },
-      n = {
-        name = "Neovim",
-        r = { ":Reload<cr>", "Core Reload " },
-        c = { ":e $MYVIMRC<cr>", "Configuration" },
-        s = { ":StartupTime<cr>", "StartupTime" },
-        i = { ":Inspect<cr>", "Inspect" }, -- only available on neovim 0.9
-        u = { ":Update<cr>", "Update" },
-        h = { ":checkhealth<cr>", "Health" },
-        v = { ":version<cr>", "Version" },
-      },
-      l = {
-        name = "LSP",
-        f = { ":Format<cr>", "Format" },
-        a = { ":Lspsaga code_action<cr>", "Code Action" },
-        i = { ":LspInfo<cr>", "Info" },
-        o = { ":Lspsaga outline<cr>", "Code Outline" },
-        I = { ":Lspsaga incoming_calls<cr>", "Incoming Calls" },
-        O = { ":Lspsaga outgoing_calls<cr>", "Outgoing Calls" },
-        m = { ":Mason<cr>", "Mason Installer" },
-        j = {
-          ":Lspsaga diagnostic_jump_next<cr>",
-          "Next Diagnostic",
-        },
-        k = {
-          ":Lspsaga diagnostic_jump_prev<cr>",
-          "Prev Diagnostic",
-        },
-        r = { ":Lspsaga rename<cr>", "Rename" },
-        d = { ":Telescope diagnostics bufnr=0<cr>", "Document Diagnostics" },
-        w = { ":Telescope diagnostics<cr>", "Workspace Diagnostics" },
-        s = { ":Telescope lsp_document_symbols<cr>", "Document Symbols" },
-        S = { ":Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
-      },
       s = {
         name = "Search",
-        a = { ":Telescope autocommands<cr>", "Autocommmands" },
-        b = { ":Telescope git_branches<cr>", "Checkout branch" },
-        c = { ":Telescope colorscheme<cr>", "Colorscheme" },
-        h = { ":Telescope help_tags<cr>", "Find Help" },
-        k = { ":Telescope keymaps<cr>", "Keymaps" },
-        C = { ":Telescope commands<cr>", "Commands" },
-        r = { ":Telescope oldfiles<cr>", "Recent File" },
+        c = { ":Telescope find_files cwd=~/.config/nvim<CR>", "Config files" },
+        r = { ":Telescope oldfiles<cr>", "Recent files" },
         H = { ":Telescope highlights<cr>", "Highlights" },
       },
     }
-    which_key.setup(setup)
-    which_key.register(mappings, opts)
+
+    wk.setup(setup)
+    wk.register(mappings, opts)
   end,
 }

@@ -1,3 +1,4 @@
-require("core")
-require("plugin-loader")
+require("core.settings")
+require("core.keymappings")
+require("bootstrap")
 require("themes")
