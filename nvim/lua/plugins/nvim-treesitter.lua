@@ -45,7 +45,6 @@ return {
         "diff",
         "gitcommit",
         "go",
-        "help",
         "html",
         "javascript",
         "json",

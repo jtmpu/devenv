@@ -8,17 +8,17 @@ return {
     local bufferline = require("bufferline")
     local setup = {
       options = {
-        mode = "buffers", -- set to "tabs" to only show tabpages instead
-        close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
+        mode = "buffers",                    -- set to "tabs" to only show tabpages instead
+        close_command = "Bdelete! %d",       -- can be a string | function, see "Mouse actions"
         right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
         offsets = {
           { filetype = "NvimTree", text = "File Explorer", highlight = "Directory", padding = 1 },
-          { filetype = "Outline", text = "Code Outline", highlight = "Directory", padding = 1 },
+          { filetype = "Outline",  text = "Code Outline",  highlight = "Directory", padding = 1 },
         },
         indicator = {
           icon = "▎",
         },
-        buffer_close_icon = "",
+        buffer_close_icon = "󰅙",
         modified_icon = "●",
         close_icon = "",
         left_trunc_marker = "",

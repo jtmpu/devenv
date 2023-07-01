@@ -24,7 +24,7 @@ return {
     local lspopts = require("plugins.lsp.config")
 
     local servers = {
-      "sumneko_lua",
+      "lua_ls",
       "rust_analyzer",
       "pylsp",
       "gopls",
@@ -63,7 +63,5 @@ return {
         lspconfig[server_name].setup(opts)
       end,
     })
-
   end,
 }
-
