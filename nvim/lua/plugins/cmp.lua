@@ -2,13 +2,13 @@ return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
-    "hrsh7th/cmp-buffer", -- Buffer Completions
-    "hrsh7th/cmp-path", -- Path Completions
-    "saadparwaiz1/cmp_luasnip", -- Snippet Completions
-    "hrsh7th/cmp-nvim-lsp", -- LSP Completions
-    "hrsh7th/cmp-nvim-lua", -- Lua Completions
-    "hrsh7th/cmp-cmdline", -- CommandLine Completions
-    "L3MON4D3/LuaSnip", -- Snippet Engine
+    "hrsh7th/cmp-buffer",           -- Buffer Completions
+    "hrsh7th/cmp-path",             -- Path Completions
+    "saadparwaiz1/cmp_luasnip",     -- Snippet Completions
+    "hrsh7th/cmp-nvim-lsp",         -- LSP Completions
+    "hrsh7th/cmp-nvim-lua",         -- Lua Completions
+    "hrsh7th/cmp-cmdline",          -- CommandLine Completions
+    "L3MON4D3/LuaSnip",             -- Snippet Engine
     "rafamadriz/friendly-snippets", -- Bunch of Snippets
   },
   config = function()
@@ -20,31 +20,31 @@ return {
     -- require("luasnip.loaders.from_vscode").lazy_load { paths = vim.fn.stdpath "config" .. "/snippets/vscode" }
 
     local kind_icons = {
-      Text = "",
-      Method = "",
-      Function = "",
+      Text = "󰉿",
+      Method = "󰆧",
+      Function = "󰊕",
       Constructor = "",
-      Field = "ﰠ",
+      Field = "󰜢",
       Variable = "",
-      Class = "ﴯ",
+      Class = "󰠱",
       Interface = "",
       Module = "",
-      Property = "ﰠ",
-      Unit = "塞",
-      Value = "",
+      Property = "󰜢",
+      Unit = "󰑭",
+      Value = "󰎠",
       Enum = "",
-      Keyword = "",
+      Keyword = "󰌋",
       Snippet = "",
-      Color = "",
-      File = "",
-      Reference = "",
-      Folder = "",
+      Color = "󰏘",
+      File = "󰈙",
+      Reference = "󰈇",
+      Folder = "󰉋",
       EnumMember = "",
-      Constant = "",
-      Struct = "פּ",
+      Constant = "󰏿",
+      Struct = "󰙅",
       Event = "",
-      Operator = "",
-      TypeParameter = "",
+      Operator = "󰆕",
+      TypeParameter = "󰊄",
     }
 
     cmp.setup {

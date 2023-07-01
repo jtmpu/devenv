@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 local opts = {
   root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
   defaults = {
-    lazy = false, -- should plugins be lazy-loaded?
+    lazy = false,                           -- should plugins be lazy-loaded?
     version = nil,
     -- version = "*", -- enable this to try installing the latest stable versions of plugins
   },
@@ -26,7 +26,7 @@ local opts = {
     -- defaults for the `Lazy log` command
     -- log = { "-10" }, -- show the last 10 commits
     log = { "--since=3 days ago" }, -- show commits from the last 3 days
-    timeout = 120, -- kill processes that take more than 2 minutes
+    timeout = 120,                  -- kill processes that take more than 2 minutes
     url_format = "https://github.com/%s.git",
     -- lazy.nvim requires git >=2.19.0. If you really want to use lazy with an older version,
     -- then set the below to false. This is should work, but is NOT supported and will
@@ -37,7 +37,7 @@ local opts = {
     -- directory where you store your local plugin projects
     path = "~/projects",
     ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
-    patterns = {}, -- For example {"folke"}
+    patterns = {},    -- For example {"folke"}
     fallback = false, -- Fallback to git when local plugin doesn't exist
   },
   install = {
@@ -60,7 +60,7 @@ local opts = {
       init = " ",
       import = " ",
       keys = " ",
-      lazy = "鈴 ",
+      lazy = "󰒲 ",
       loaded = "●",
       not_loaded = "○",
       plugin = " ",
@@ -111,7 +111,7 @@ local opts = {
     -- automatically check for plugin updates
     enabled = false,
     concurrency = nil, ---@type number? set to 1 to check for updates very slowly
-    notify = true, -- get a notification when new updates are found
+    notify = true,    -- get a notification when new updates are found
     frequency = 3600, -- check for updates every hour
   },
   change_detection = {
@@ -133,9 +133,9 @@ local opts = {
     },
     reset_packpath = true, -- reset the package path to improve startup time
     rtp = {
-      reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
+      reset = true,        -- reset the runtime path to $VIMRUNTIME and your config directory
       ---@type string[]
-      paths = {}, -- add any custom paths here that you want to includes in the rtp
+      paths = {},          -- add any custom paths here that you want to includes in the rtp
       ---@type string[] list any plugins you want to disable here
       disabled_plugins = {
         -- "gzip",
@@ -161,9 +161,9 @@ local opts = {
   state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
 }
 
-local status_ok, lazy= pcall(require, "lazy")
+local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
-	return
+  return
 end
 
 -- Loads all plugins from lua/plugins
